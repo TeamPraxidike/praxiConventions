@@ -1,8 +1,11 @@
 <script lang="ts">
+    import {payload} from "../../stores/store";
+
     export let markdown:string;
 
     import { clipboard } from '@skeletonlabs/skeleton';
     export let exampleData:string = '';
+
 </script>
 
 <div class="w-full h-full px-10">
@@ -11,7 +14,7 @@
         <div class="w-full">
             <p class="mb-2 italic">You can see your markdown result here:</p>
             <div class="bg-surface-800 p-16 rounded-md w-full">
-                <p bind:this={markdown}>Waiting for options...</p>
+                <p bind:this={markdown}>{$payload.commitValue}</p>
             </div>
         </div>
         <button class="btn variant-filled-primary mt-4" use:clipboard={exampleData}>Copy</button>
