@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Stepper, Step } from '@skeletonlabs/skeleton';
+    import {Stepper, Step, SlideToggle} from '@skeletonlabs/skeleton';
     import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
     import StepperExample from "./StepperExample.svelte";
     import StepperConv from "$lib/components/StepperConv.svelte";
@@ -7,6 +7,8 @@
 
     let commitValue: number = 0;
     let branchValue: number = 0;
+
+    let strictCommits: boolean = false;
 </script>
 
 <div class="w-9/12 mt-10 bg-surface-800 p-8">
@@ -22,6 +24,10 @@
             <div class="py-4 px-2 gap-5 flex flex-col">
                 <StepperConv example={commitValue} type="commit" />
                 <StepperExample example={commitValue} type="commit" />
+                <div class="flex gap-3">
+                    <SlideToggle name="slide" active="bg-primary-500" bind:checked={strictCommits} size="sm">Strict Commit</SlideToggle>
+                    <i class="text-surface-300">commits must be focused and isolated</i>
+                </div>
             </div>
         </Step>
         <Step>
@@ -40,7 +46,6 @@
         </Step>
         <Step>
             <svelte:fragment slot="header">Development rules</svelte:fragment>
-            (content)
         </Step>
         <Step>
             <svelte:fragment slot="header">Issues</svelte:fragment>
