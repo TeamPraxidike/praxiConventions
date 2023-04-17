@@ -7,6 +7,7 @@
 
     let commitValue: number = 0;
     let branchValue: number = 0;
+    let issuesValue: number = 0;
 
     let strictCommits: boolean = false;
 </script>
@@ -46,10 +47,20 @@
         </Step>
         <Step>
             <svelte:fragment slot="header">Development rules</svelte:fragment>
+            WIP
         </Step>
         <Step>
             <svelte:fragment slot="header">Issues</svelte:fragment>
-            (content)
+            <span>Choose a structure convention and rules for the issues.</span>
+            <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                <RadioItem bind:group={issuesValue} name="justify" value={0}>Common Issues Conventions</RadioItem>
+                <RadioItem bind:group={issuesValue} name="justify" value={1}>Praxidike Conventions</RadioItem>
+            </RadioGroup>
+
+            <div class="py-4 px-2 gap-5 flex flex-col">
+                <StepperConv example={issuesValue} type="issues" />
+                <StepperExample example={issuesValue} type="issues" />
+            </div>
         </Step>
     </Stepper>
 </div>

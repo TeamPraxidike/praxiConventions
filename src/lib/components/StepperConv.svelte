@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {exBranches, exCommits} from "../../enums/enums";
+    import {exBranches, exCommits, exIssues} from "../../enums/enums";
 
     export let type:string;
     export let example:number;
@@ -24,6 +24,16 @@
                 <p>
                     [issue number]-[name] <br>
                     [issue number]-[name]
+                </p>
+            {/if}
+        {:else if type === "issues"}
+            {#if example === exIssues.CONV_STANDARD}
+                <p>
+                    &lt;TYPE&gt;: &lt;Title&gt;
+                </p>
+            {:else if example === exIssues.PRAX_ISSUES}
+                <p>
+                    [&lt;TYPE&gt;] &lt;Title&gt;
                 </p>
             {/if}
         {/if}

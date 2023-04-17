@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {exCommits, exBranches} from "../../enums/enums";
+    import {exCommits, exBranches, exIssues} from "../../enums/enums";
 
     export let type:string;
     export let example = 0;
@@ -32,6 +32,18 @@
                 <p>
                     69-about-us-page <br>
                     420-visual-glitch-in-header
+                </p>
+            {/if}
+        {:else if type === "issues"}
+            {#if example === exIssues.CONV_STANDARD}
+                <p>
+                    FEAT: Alert modal in header <br>
+                    FIX: Poor responsiveness
+                </p>
+            {:else if example === exIssues.PRAX_ISSUES}
+                <p>
+                    [FEATURE] Alert modal in header <br>
+                    [FIX] Poor responsiveness
                 </p>
             {/if}
         {/if}
