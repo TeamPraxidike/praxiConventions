@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {exCommits} from "../../enums/enums";
+    import {exBranches, exCommits} from "../../enums/enums";
 
     export let type:string;
     export let example:number;
@@ -13,6 +13,18 @@
                 <p>type[optional scope]: description</p>
             {:else if example === exCommits.PRAX_COMMITS}
                 <p>type(scope): description</p>
+            {/if}
+        {:else if type === "branch"}
+            {#if example === exBranches.CONV_BRANCHES}
+                <p>
+                    [issue number]-feature-[name] <br>
+                    [issue number]-fix-[name]
+                </p>
+            {:else if example === exBranches.GL}
+                <p>
+                    [issue number]-[name] <br>
+                    [issue number]-[name]
+                </p>
             {/if}
         {/if}
     </div>

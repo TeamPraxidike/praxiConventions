@@ -1,6 +1,5 @@
 <script lang="ts">
     import {exCommits, exBranches} from "../../enums/enums";
-    import {CodeBlock} from "@skeletonlabs/skeleton";
 
     export let type:string;
     export let example = 0;
@@ -21,6 +20,18 @@
                     feat(client): change background <br>
                     fix(server): fix updating issues on websockets <br>
                     refactor(header): make updates use foreach instead of for loop
+                </p>
+            {/if}
+        {:else if type === "branch"}
+            {#if example === exBranches.CONV_BRANCHES}
+                <p>
+                    69-feature-about-us-page <br>
+                    420-fix-visual-glitch-in-header
+                </p>
+            {:else if example === exBranches.GL}
+                <p>
+                    69-about-us-page <br>
+                    420-visual-glitch-in-header
                 </p>
             {/if}
         {/if}

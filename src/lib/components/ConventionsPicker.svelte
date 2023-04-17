@@ -2,10 +2,11 @@
     import { Stepper, Step } from '@skeletonlabs/skeleton';
     import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
     import StepperExample from "./StepperExample.svelte";
-
-    import {exCommits} from "../../enums/enums";
     import StepperConv from "$lib/components/StepperConv.svelte";
+    import StepperBranchTable from "$lib/components/StepperBranchTable.svelte";
+
     let commitValue: number = 0;
+    let branchValue: number = 0;
 </script>
 
 <div class="w-9/12 mt-10 bg-surface-800 p-8">
@@ -25,7 +26,17 @@
         </Step>
         <Step>
             <svelte:fragment slot="header">Branches</svelte:fragment>
-            (content)
+            <span>Choose a naming convention and rules for the branches.</span>
+            <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                <RadioItem bind:group={branchValue} name="justify" value={0}>Common Branch Conventions</RadioItem>
+                <RadioItem bind:group={branchValue} name="justify" value={1}>GL</RadioItem>
+            </RadioGroup>
+
+            <div class="py-4 px-2 gap-5 flex flex-col">
+                <StepperBranchTable />
+                <StepperConv example={branchValue} type="branch" />
+                <StepperExample example={branchValue} type="branch" />
+            </div>
         </Step>
         <Step>
             <svelte:fragment slot="header">Development rules</svelte:fragment>
