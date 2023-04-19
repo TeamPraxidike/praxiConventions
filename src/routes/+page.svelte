@@ -32,8 +32,8 @@
         </div>
     </article>
     <article class="flex justify-center items-center flex-col">
-        <h2>Generators</h2>
-        <div class="flex flex-col md:flex-row flex-wrap justify-center items-center py-10 xl:py-20 gap-4 w-full">
+        <h2 class="lg:mt-10">Generators</h2>
+        <div class="flex flex-col md:flex-row flex-wrap justify-center items-center py-10 xl:py-10 gap-4 w-full">
             <EditorCard generator={generators.CONVENTION} />
             <EditorCard generator={generators.ISSUE} />
             <EditorCard generator={generators.PULL_REQ} />
