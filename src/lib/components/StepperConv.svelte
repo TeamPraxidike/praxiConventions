@@ -5,36 +5,36 @@
     export let example:number;
 </script>
 
-<div>
-    <p class="mb-2">Structure:</p>
+<div class="text-sm sm:text-base">
+    <span class="mb-2">Structure:</span>
     <div class="bg-surface-900 p-4">
         {#if type === "commit"}
             {#if example === exCommits.CONV_COMMITS}
-                <p>type[optional scope]: description</p>
+                <span>type[optional scope]: description</span>
             {:else if example === exCommits.PRAX_COMMITS}
-                <p>type(scope): description</p>
+                <span>type(scope): description</span>
             {/if}
         {:else if type === "branch"}
             {#if example === exBranches.CONV_BRANCHES}
-                <p>
+                <span>
                     [issue number]-feature-[name] <br>
                     [issue number]-fix-[name]
-                </p>
+                </span>
             {:else if example === exBranches.GL}
-                <p>
+                <span>
                     [issue number]-[name] <br>
                     [issue number]-[name]
-                </p>
+                </span>
             {/if}
         {:else if type === "issues"}
             {#if example === exIssues.CONV_STANDARD}
-                <p>
+                <span>
                     &lt;TYPE&gt;: &lt;Title&gt;
-                </p>
+                </span>
             {:else if example === exIssues.PRAX_ISSUES}
-                <p>
+                <span>
                     [&lt;TYPE&gt;] &lt;Title&gt;
-                </p>
+                </span>
             {/if}
         {/if}
     </div>
