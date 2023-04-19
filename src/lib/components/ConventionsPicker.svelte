@@ -6,17 +6,31 @@
     import StepperBranchTable from "$lib/components/StepperBranchTable.svelte";
 
     import {payload} from "../../stores/store";
+
+    let innerWidth:number = 0
+    let innerHeight:number = 0
 </script>
 
-<div class="w-9/12 mt-10 bg-surface-800 p-8">
-    <Stepper>
+<!--TODO Check if there is a better way to make the RadioGroups responsive-->
+<svelte:window bind:innerWidth bind:innerHeight />
+
+<div class="w-full bg-surface-800 p-8">
+    <Stepper class="text-sm sm:text-base">
         <Step>
             <svelte:fragment slot="header">Commits</svelte:fragment>
             <span>Choose a naming convention for the commits. Examples will be shown below:</span>
-            <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                <RadioItem bind:group={$payload.commitValue} name="justify" value={0}>Conventional Commits</RadioItem>
-                <RadioItem bind:group={$payload.commitValue} name="justify" value={1}>Praxidike Commits</RadioItem>
-            </RadioGroup>
+
+            {#if innerWidth < 640}
+                <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={0}>Conventional Commits</RadioItem>
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={1}>Praxidike Commits</RadioItem>
+                </RadioGroup>
+                {:else}
+                <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={0}>Conventional Commits</RadioItem>
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={1}>Praxidike Commits</RadioItem>
+                </RadioGroup>
+            {/if}
 
             <div class="py-4 px-2 gap-5 flex flex-col">
                 <StepperConv example={$payload.commitValue} type="commit" />
@@ -30,10 +44,19 @@
         <Step>
             <svelte:fragment slot="header">Branches</svelte:fragment>
             <span>Choose a naming convention and rules for the branches.</span>
-            <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                <RadioItem bind:group={$payload.branchValue} name="justify" value={0}>Common Branch Conventions</RadioItem>
-                <RadioItem bind:group={$payload.branchValue} name="justify" value={1}>GL</RadioItem>
-            </RadioGroup>
+
+
+            {#if innerWidth < 640}
+                <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={0}>Common Branch Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={1}>GL</RadioItem>
+                </RadioGroup>
+                {:else}
+                <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={0}>Common Branch Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={1}>GL</RadioItem>
+                </RadioGroup>
+            {/if}
 
             <div class="py-4 px-2 gap-5 flex flex-col">
                 <StepperBranchTable />
@@ -48,10 +71,19 @@
         <Step>
             <svelte:fragment slot="header">Issues</svelte:fragment>
             <span>Choose a structure convention and rules for the issues.</span>
-            <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                <RadioItem bind:group={$payload.issuesValue} name="justify" value={0}>Common Issues Conventions</RadioItem>
-                <RadioItem bind:group={$payload.issuesValue} name="justify" value={1}>Praxidike Conventions</RadioItem>
-            </RadioGroup>
+
+
+            {#if innerWidth < 640}
+                <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={0}>Common Issues Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={1}>Praxidike Conventions</RadioItem>
+                </RadioGroup>
+                {:else}
+                <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={0}>Common Issues Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={1}>Praxidike Conventions</RadioItem>
+                </RadioGroup>
+            {/if}
 
             <div class="py-4 px-2 gap-5 flex flex-col">
                 <StepperConv example={$payload.issuesValue} type="issues" />

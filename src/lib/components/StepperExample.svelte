@@ -5,46 +5,46 @@
     export let example = 0;
 </script>
 
-<div>
-    <p class="mb-2">Examples:</p>
+<div class="text-sm sm:text-base">
+    <span class="mb-2">Examples:</span>
     <div class="bg-surface-900 p-4">
         {#if type === "commit"}
             {#if example === exCommits.CONV_COMMITS}
-                <p>
+                <span>
                     feat: reactive background colours <br>
                     fix: bug with screen resizing <br>
                     perf(client): optimize load time
-                </p>
+                </span>
             {:else if example === exCommits.PRAX_COMMITS}
-                <p>
+                <span>
                     feat(client): change background <br>
                     fix(server): fix updating issues on websockets <br>
                     refactor(header): make updates use foreach instead of for loop
-                </p>
+                </span>
             {/if}
         {:else if type === "branch"}
             {#if example === exBranches.CONV_BRANCHES}
-                <p>
+                <span>
                     69-feature-about-us-page <br>
                     420-fix-visual-glitch-in-header
-                </p>
+                </span>
             {:else if example === exBranches.GL}
-                <p>
+                <span>
                     69-about-us-page <br>
                     420-visual-glitch-in-header
-                </p>
+                </span>
             {/if}
         {:else if type === "issues"}
             {#if example === exIssues.CONV_STANDARD}
-                <p>
+                <span>
                     FEAT: Alert modal in header <br>
                     FIX: Poor responsiveness
-                </p>
+                </span>
             {:else if example === exIssues.PRAX_ISSUES}
-                <p>
+                <span>
                     [FEATURE] Alert modal in header <br>
                     [FIX] Poor responsiveness
-                </p>
+                </span>
             {/if}
         {/if}
     </div>
