@@ -44,7 +44,7 @@
         </Step>
         <Step>
             <svelte:fragment slot="header">Branches</svelte:fragment>
-            <span>Choose a naming convention and rules for the branches.</span>
+            <span>Choose a naming convention and rules for the branches.</span> <br>
 
 
             {#if innerWidth < 640}
