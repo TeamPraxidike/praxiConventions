@@ -1,7 +1,9 @@
 <script lang="ts">
     import Card from "$lib/components/reusable/Card.svelte";
     import { CardClass } from "../typescript/classes/CardClass"
+    import {generators} from "../typescript/enums/enums";
     import IconifyIcon from '@iconify/svelte';
+    import EditorCard from "$lib/components/reusable/GeneratorsCard.svelte";
 
     let card1:CardClass = new CardClass("Inspiration", "The inspiration behind this project stems from observing the absence of established rules and conventions in repositories managed by newer developers.")
     let card2:CardClass = new CardClass("Why use?", "Standardizing issues, commits, branches, rules, and workflows through conventions can significantly enhance repositories by making work more efficient and enjoyable.")
@@ -19,14 +21,22 @@
         <h2>About this project</h2>
         <div class="flex flex-col flex-wrap justify-center md:flex-row py-10 xl:py-20 gap-4">
             <Card card={card1}>
-                <IconifyIcon class="text-6xl text-primary-400" icon="clarity:lightbulb-solid" />
+                <IconifyIcon class="text-3xl text-primary-400" icon="clarity:lightbulb-solid" />
             </Card>
             <Card card={card2}>
-                <IconifyIcon class="text-6xl text-primary-400" icon="clarity:analytics-solid" />
+                <IconifyIcon class="text-3xl text-primary-400" icon="clarity:analytics-solid" />
             </Card>
             <Card card={card3}>
-                <IconifyIcon class="text-6xl text-primary-400" icon="clarity:analytics-solid" />
+                <IconifyIcon class="text-3xl text-primary-400" icon="clarity:note-edit-solid" />
             </Card>
+        </div>
+    </article>
+    <article class="flex justify-center items-center flex-col">
+        <h2>Generators</h2>
+        <div class="flex flex-col md:flex-row flex-wrap justify-center items-center py-10 xl:py-20 gap-4 w-full">
+            <EditorCard generator={generators.CONVENTION} />
+            <EditorCard generator={generators.ISSUE} />
+            <EditorCard generator={generators.PULL_REQ} />
         </div>
     </article>
 </div>

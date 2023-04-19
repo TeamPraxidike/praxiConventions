@@ -14,6 +14,6 @@
 
 <Header />
 
-<main class="bg-surface-900 min-h-screen h-full w-full text-tertiary-200">
+<main class="bg-gradient-to-b from-surface-800 to-surface-900 min-h-screen h-full w-full text-tertiary-200">
     <slot />
 </main>

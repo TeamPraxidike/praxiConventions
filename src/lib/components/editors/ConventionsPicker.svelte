@@ -19,7 +19,7 @@
     <Stepper class="text-sm sm:text-base">
         <Step>
             <svelte:fragment slot="header">Commits</svelte:fragment>
-            <span>Choose a naming convention for the commits. Examples will be shown below:</span>
+            <span>Choose a naming convention for the commits. Examples will be shown below:</span> <br>
 
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
