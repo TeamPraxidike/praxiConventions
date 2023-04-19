@@ -25,20 +25,4 @@
       -webkit-backdrop-filter: blur(11.2px);
       transform: rotateY(9deg) rotateX(3deg);
     }
-
-    .hover {
-        animation: hover 6s ease-in-out infinite;
-    }
-
-    @keyframes hover {
-      0% {
-        transform: translatey(0px);
-      }
-      50% {
-        transform: translatey(10px);
-      }
-      100% {
-        transform: translatey(0px);
-      }
-    }
 </style>

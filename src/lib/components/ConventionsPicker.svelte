@@ -1,5 +1,4 @@
 <script lang="ts">
-    import {Payload} from "../../classes/Payload";
     import {Stepper, Step, SlideToggle} from '@skeletonlabs/skeleton';
     import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
     import StepperExample from "./StepperExample.svelte";
