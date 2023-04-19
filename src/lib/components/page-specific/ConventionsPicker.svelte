@@ -1,11 +1,12 @@
 <script lang="ts">
     import {Stepper, Step, SlideToggle} from '@skeletonlabs/skeleton';
     import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
-    import StepperExample from "./StepperExample.svelte";
-    import StepperConv from "$lib/components/StepperConv.svelte";
-    import StepperBranchTable from "$lib/components/StepperBranchTable.svelte";
 
-    import {payload} from "../../stores/store";
+
+    import {payload} from "../../../stores/store";
+    import StepperConv from "../reusable/StepperConv.svelte";
+    import StepperExample from "../reusable/StepperExample.svelte";
+    import StepperBranchTable from "../reusable/StepperBranchTable.svelte";
 
     let innerWidth:number = 0
     let innerHeight:number = 0

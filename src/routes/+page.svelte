@@ -1,7 +1,6 @@
 <script lang="ts">
-
-import ResultPanel from "../lib/components/ResultPanel.svelte";
-import ConventionsPicker from "$lib/components/ConventionsPicker.svelte";
+    import ResultPanel from "../lib/components/reusable/ResultPanel.svelte";
+    import ConventionsPicker from "../lib/components/page-specific/ConventionsPicker.svelte";
 </script>
 <main class="bg-surface-900 text-secondary-500 min-h-screen h-full w-full text-tertiary-200">
     <h1 class="text-center pt-16 pb-5">Praxi Conventions</h1>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {payload} from "../../stores/store";
+    import {payload} from "../../../stores/store";
     import { CodeBlock } from "@skeletonlabs/skeleton";
 </script>
 
