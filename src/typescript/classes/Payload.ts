@@ -152,13 +152,15 @@ export class Payload {
 
     // TODO MASSIVE RESTRUCTURING AND OPTIMIZATION
     generate():string {
-        return "<!-- TEMPLATE OF A CONVENTIONS.md TO ESTABLISH RULES WITHIN A REPOSITORY -->\n" +
-            "<!-- Written by Zakrok09 with notable contributions noted or linked below -->\n" +
-            "<!-- Free to use. Credits are appriciated :) -->\n" +
+        return "<!-- CONVENTIONS AND RULES WHEN DEVELOPING IN THIS REPOSITORY -->\n" +
+            (this.includeCredit ?
+                "<!-- Template by Zakrok09 (https://github.com/zakrok09) -->\n" +
+                "<!-- member of TeamPraxidike (https://github.com/TeamPraxidike) -->\n" : "") +
             "\n" +
             "# Rules and conventions\n" +
             "\n" +
-            "This document will describe rules that MUST be followed by contributors to this project during development and coding. The document [Code of Conduct](CODE_OF_CONDUCT.md) focuses more on rules regarding the behaviour of Contributors.\n" +
+            "This document will describe rules that MUST be followed by contributors to this project during development and coding." +
+            (this.includeLinkToCoC ? "The document [Code of Conduct](" + (this.linkToCoC === "" ? "CODE_OF_CONDUCT.md" : this.linkToCoC) + ") focuses more on rules regarding the behaviour of Contributors.": "") +
             "\n" +
             "## Code contribution workflow\n" +
             "\n" +

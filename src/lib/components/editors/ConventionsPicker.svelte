@@ -51,7 +51,6 @@
                     <RadioItem bind:group={$payload.issuesValue} name="justify" value={1}>Praxidike Conventions</RadioItem>
                 </RadioGroup>
             {/if}
-
             <div class="py-4 px-2 gap-5 flex flex-col">
                 <StepperConv example={$payload.issuesValue} type="issues" />
                 <StepperExample example={$payload.issuesValue} type="issues" />
