@@ -1,14 +1,16 @@
 <script lang="ts">
-    import {payload} from "../../stores/store";
+    import {payload} from "../../../stores/store";
     import { CodeBlock } from "@skeletonlabs/skeleton";
 </script>
 
-<div class="w-full h-full lg:px-10">
+<div class="w-full lg:px-10">
     <div class="result py-10 lg:py-14 px-6 lg:px-12 rounded-xl hover flex flex-col items-center w-full">
         <h2 class="text-center mb-14">Result</h2>
         <div class="w-full">
             <p class="mb-2 italic">You can see your markdown result here:</p>
-            <CodeBlock language="md" code={$payload.generate()} text="text-xs"></CodeBlock>
+            <div class="overflow-y-scroll hide-scrollbar h-[600px]">
+                <CodeBlock language="md" code={$payload.generate()} text="text-xs"></CodeBlock>
+            </div>
         </div>
     </div>
 </div>

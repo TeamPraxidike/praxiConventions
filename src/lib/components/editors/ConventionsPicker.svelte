@@ -1,11 +1,12 @@
 <script lang="ts">
     import {Stepper, Step, SlideToggle} from '@skeletonlabs/skeleton';
     import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
-    import StepperExample from "./StepperExample.svelte";
-    import StepperConv from "$lib/components/StepperConv.svelte";
-    import StepperBranchTable from "$lib/components/StepperBranchTable.svelte";
 
-    import {payload} from "../../stores/store";
+
+    import {payload} from "../../../stores/store";
+    import StepperConv from "../reusable/StepperConv.svelte";
+    import StepperExample from "../reusable/StepperExample.svelte";
+    import StepperBranchTable from "../reusable/StepperBranchTable.svelte";
 
     let innerWidth:number = 0
     let innerHeight:number = 0
@@ -18,7 +19,7 @@
     <Stepper class="text-sm sm:text-base">
         <Step>
             <svelte:fragment slot="header">Commits</svelte:fragment>
-            <span>Choose a naming convention for the commits. Examples will be shown below:</span>
+            <span>Choose a naming convention for the commits. Examples will be shown below:</span> <br>
 
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
@@ -43,7 +44,7 @@
         </Step>
         <Step>
             <svelte:fragment slot="header">Branches</svelte:fragment>
-            <span>Choose a naming convention and rules for the branches.</span>
+            <span>Choose a naming convention and rules for the branches.</span> <br>
 
 
             {#if innerWidth < 640}
