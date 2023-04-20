@@ -10,6 +10,7 @@
     storeHighlightJs.set(hljs);
 
     import Header from "$lib/components/page/Header.svelte";
+    import Footer from "$lib/components/page/Footer.svelte";
 </script>
 
 <Header />
@@ -17,3 +18,5 @@
 <main class="bg-gradient-to-b from-surface-800 to-surface-900 min-h-screen h-full w-full text-tertiary-200">
     <slot />
 </main>
+
+<Footer />
