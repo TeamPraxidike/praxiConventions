@@ -6,6 +6,11 @@ export class Payload {
     issuesValue: number;
     strictCommits: boolean;
 
+    includeLinkToCoC: boolean;
+    linkToCoC: string;
+    includeCredit: boolean;
+    includeCR: boolean;
+
     /**
      * Constructor for Payload class
      */
@@ -14,6 +19,11 @@ export class Payload {
         this.branchValue = 0;
         this.issuesValue = 0;
         this.strictCommits = false;
+
+        this.includeLinkToCoC = false
+        this.linkToCoC = "CODE_OF_CONDUCT.md";
+        this.includeCredit = false;
+        this.includeCR = true;
     }
 
 
@@ -167,7 +177,7 @@ export class Payload {
 
             this.genIssue() +
 
-            "### Branch conventions\n" +
+            "\n \n### Branch conventions\n" +
 
             this.genBranch() +
 
