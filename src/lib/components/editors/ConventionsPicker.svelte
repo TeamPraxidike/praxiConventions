@@ -20,14 +20,14 @@
     <Stepper class="text-sm sm:text-base">
         <Step>
             <svelte:fragment slot="header">General options</svelte:fragment>
-            <div class="flex gap-3">
+            <div class="flex flex-col sm:flex-row gap-3">
                 <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeLinkToCoC} size="sm">Code of Conduct</SlideToggle>
                 <i class="text-surface-300">include a link to your Code of Conduct</i>
             </div>
             {#if $payload.includeLinkToCoC}
                 <input type="text" bind:value={$payload.linkToCoC} id="first_name" class="bg-surface-900 border border-surface-700 text-gray-100 text-sm rounded-lg block w-full p-2.5" placeholder="CODE_OF_CONDUCT.md" required>
             {/if}
-            <div class="flex gap-3">
+            <div class="flex flex-col sm:flex-row gap-3">
                 <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeCredit} size="sm">Credit us</SlideToggle>
                 <i class="text-surface-300">include credits to us on top of the document</i>
             </div>
@@ -48,7 +48,7 @@
                 </RadioGroup>
             {/if}
 
-            <div class="flex gap-3">
+            <div class="flex flex-col sm:flex-row gap-3">
                 <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeGHProj} size="sm">GitHub Projects</SlideToggle>
                 <i class="text-surface-300">include paragraph that mandates use of GitHub Projects.</i>
             </div>
@@ -115,7 +115,7 @@
             <div class="py-4 px-2 gap-5 flex flex-col">
                 <StepperConv example={$payload.commitValue} type="commit" />
                 <StepperExample example={$payload.commitValue} type="commit" />
-                <div class="flex gap-3">
+                <div class="flex flex-col sm:flex-row gap-3">
                     <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.strictCommits} size="sm">Strict Commit</SlideToggle>
                     <i class="text-surface-300">commits must be focused and isolated</i>
                 </div>
