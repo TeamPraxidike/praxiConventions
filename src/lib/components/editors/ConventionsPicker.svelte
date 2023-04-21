@@ -1,9 +1,8 @@
 <script lang="ts">
-    import {Stepper, Step, SlideToggle} from '@skeletonlabs/skeleton';
-    import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
+    import {RadioGroup, RadioItem, SlideToggle, Step, Stepper} from '@skeletonlabs/skeleton';
 
 
-    import {payload} from "../../../stores/store";
+    import {conventionsPayload} from "../../../stores/store";
     import StepperConv from "../reusable/StepperConv.svelte";
     import StepperExample from "../reusable/StepperExample.svelte";
     import StepperBranchTable from "../reusable/StepperBranchTable.svelte";
@@ -21,14 +20,14 @@
         <Step>
             <svelte:fragment slot="header">General options</svelte:fragment>
             <div class="flex flex-col sm:flex-row gap-3">
-                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeLinkToCoC} size="sm">Code of Conduct</SlideToggle>
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$conventionsPayload.includeLinkToCoC} size="sm">Code of Conduct</SlideToggle>
                 <i class="text-surface-300">include a link to your Code of Conduct</i>
             </div>
-            {#if $payload.includeLinkToCoC}
-                <input type="text" bind:value={$payload.linkToCoC} id="first_name" class="bg-surface-900 border border-surface-700 text-gray-100 text-sm rounded-lg block w-full p-2.5" placeholder="CODE_OF_CONDUCT.md" required>
+            {#if $conventionsPayload.includeLinkToCoC}
+                <input type="text" bind:value={$conventionsPayload.linkToCoC} id="first_name" class="bg-surface-900 border border-surface-700 text-gray-100 text-sm rounded-lg block w-full p-2.5" placeholder="CODE_OF_CONDUCT.md" required>
             {/if}
             <div class="flex flex-col sm:flex-row gap-3">
-                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeCredit} size="sm">Credit us</SlideToggle>
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$conventionsPayload.includeCredit} size="sm">Credit us</SlideToggle>
                 <i class="text-surface-300">include credits to us on top of the document</i>
             </div>
         </Step>
@@ -38,18 +37,18 @@
             <span>Choose a code contribution workflow.</span> <br>
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.CONV_WORKFLOW}>Conventional workflow</RadioItem>
-                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.PRAX_WORKFLOW}>Praxidike Conventions</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.workflowsValue} name="justify" value={exWorkflows.CONV_WORKFLOW}>Conventional workflow</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.workflowsValue} name="justify" value={exWorkflows.PRAX_WORKFLOW}>Praxidike Conventions</RadioItem>
                 </RadioGroup>
             {:else}
                 <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.CONV_WORKFLOW}>Conventional workflow</RadioItem>
-                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.PRAX_WORKFLOW}>Praxidike Conventions</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.workflowsValue} name="justify" value={exWorkflows.CONV_WORKFLOW}>Conventional workflow</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.workflowsValue} name="justify" value={exWorkflows.PRAX_WORKFLOW}>Praxidike Conventions</RadioItem>
                 </RadioGroup>
             {/if}
 
             <div class="flex flex-col sm:flex-row gap-3">
-                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeGHProj} size="sm">GitHub Projects</SlideToggle>
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$conventionsPayload.includeGHProj} size="sm">GitHub Projects</SlideToggle>
                 <i class="text-surface-300">include paragraph that mandates use of GitHub Projects.</i>
             </div>
         </Step>
@@ -59,29 +58,29 @@
 
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.CONV_STANDARD}>Common Issues Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.PRAX_ISSUES}>Praxidike Conventions</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.issuesValue} name="justify" value={exIssues.CONV_STANDARD}>Common Issues Conventions</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.issuesValue} name="justify" value={exIssues.PRAX_ISSUES}>Praxidike Conventions</RadioItem>
                 </RadioGroup>
             {:else}
                 <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.CONV_STANDARD}>Common Issues Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.PRAX_ISSUES}>Praxidike Conventions</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.issuesValue} name="justify" value={exIssues.CONV_STANDARD}>Common Issues Conventions</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.issuesValue} name="justify" value={exIssues.PRAX_ISSUES}>Praxidike Conventions</RadioItem>
                 </RadioGroup>
             {/if}
             <div class="py-4 px-2 gap-5 flex flex-col">
-                <StepperConv example={$payload.issuesValue} type="issues" />
-                <StepperExample example={$payload.issuesValue} type="issues" />
+                <StepperConv example={$conventionsPayload.issuesValue} type="issues" />
+                <StepperExample example={$conventionsPayload.issuesValue} type="issues" />
             </div>
             <div class="flex flex-col sm:flex-row gap-3">
-                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeAssignees} size="sm">Require Assignees</SlideToggle>
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$conventionsPayload.includeAssignees} size="sm">Require Assignees</SlideToggle>
                 <i class="text-surface-300">issues must be assigned to members upon creation</i>
             </div>
             <div class="flex flex-col sm:flex-row gap-3">
-                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeLabels} size="sm">Require Labels</SlideToggle>
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$conventionsPayload.includeLabels} size="sm">Require Labels</SlideToggle>
                 <i class="text-surface-300">issues must be labeled upon creation</i>
             </div>
             <div class="flex flex-col sm:flex-row gap-3">
-                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeSpamPrev} size="sm">Spam Prevention</SlideToggle>
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$conventionsPayload.includeSpamPrev} size="sm">Spam Prevention</SlideToggle>
                 <i class="text-surface-300">spamming issues will result in a ban or other penalty</i>
             </div>
         </Step>
@@ -92,23 +91,23 @@
 
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.CONV_BRANCHES}>Common Branch Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.GL}>GL</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.branchValue} name="justify" value={exBranches.CONV_BRANCHES}>Common Branch Conventions</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.branchValue} name="justify" value={exBranches.GL}>GL</RadioItem>
                 </RadioGroup>
                 {:else}
                 <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.CONV_BRANCHES}>Common Branch Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.GL}>GL</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.branchValue} name="justify" value={exBranches.CONV_BRANCHES}>Common Branch Conventions</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.branchValue} name="justify" value={exBranches.GL}>GL</RadioItem>
                 </RadioGroup>
             {/if}
 
             <div class="px-0 py-4 sm:px-2 w-full gap-5 flex flex-col">
                 <StepperBranchTable />
-                <StepperConv example={$payload.branchValue} type="branch" />
-                <StepperExample example={$payload.branchValue} type="branch" />
+                <StepperConv example={$conventionsPayload.branchValue} type="branch" />
+                <StepperExample example={$conventionsPayload.branchValue} type="branch" />
             </div>
             <div class="flex flex-col sm:flex-row gap-3">
-                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.stableTagged} size="sm">Tagged stable</SlideToggle>
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$conventionsPayload.stableTagged} size="sm">Tagged stable</SlideToggle>
                 <i class="text-surface-300">the stable branch should be tagged</i>
             </div>
         </Step>
@@ -118,21 +117,21 @@
 
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.CONV_COMMITS}>Conventional Commits</RadioItem>
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.PRAX_COMMITS}>Praxidike Commits</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.commitValue} name="justify" value={exCommits.CONV_COMMITS}>Conventional Commits</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.commitValue} name="justify" value={exCommits.PRAX_COMMITS}>Praxidike Commits</RadioItem>
                 </RadioGroup>
             {:else}
                 <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.CONV_COMMITS}>Conventional Commits</RadioItem>
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.PRAX_COMMITS}>Praxidike Commits</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.commitValue} name="justify" value={exCommits.CONV_COMMITS}>Conventional Commits</RadioItem>
+                    <RadioItem bind:group={$conventionsPayload.commitValue} name="justify" value={exCommits.PRAX_COMMITS}>Praxidike Commits</RadioItem>
                 </RadioGroup>
             {/if}
 
             <div class="py-4 px-2 gap-5 flex flex-col">
-                <StepperConv example={$payload.commitValue} type="commit" />
-                <StepperExample example={$payload.commitValue} type="commit" />
+                <StepperConv example={$conventionsPayload.commitValue} type="commit" />
+                <StepperExample example={$conventionsPayload.commitValue} type="commit" />
                 <div class="flex flex-col sm:flex-row gap-3">
-                    <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.strictCommits} size="sm">Strict Commit</SlideToggle>
+                    <SlideToggle name="slide" active="bg-primary-500" bind:checked={$conventionsPayload.strictCommits} size="sm">Strict Commit</SlideToggle>
                     <i class="text-surface-300">commits must be focused and isolated</i>
                 </div>
             </div>

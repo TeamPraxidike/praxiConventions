@@ -3,7 +3,7 @@
     import { CardClass } from "../typescript/classes/CardClass"
     import {generators} from "../typescript/enums/enums";
     import IconifyIcon from '@iconify/svelte';
-    import EditorCard from "$lib/components/reusable/GeneratorsCard.svelte";
+    import GeneratorCard from "$lib/components/reusable/GeneratorsCard.svelte";
 
     let card1:CardClass = new CardClass("Inspiration", "The inspiration behind this project stems from observing the absence of established rules and conventions in repositories managed by newer developers.")
     let card2:CardClass = new CardClass("Why use?", "Standardizing issues, commits, branches, rules, and workflows through conventions can significantly enhance repositories by making work more efficient and enjoyable.")
@@ -34,9 +34,9 @@
     <article class="flex justify-center items-center flex-col">
         <h2 class="lg:mt-10">Generators</h2>
         <div class="flex flex-col md:flex-row flex-wrap justify-center items-center py-10 xl:py-10 gap-4 w-full">
-            <EditorCard generator={generators.CONVENTION} />
-            <EditorCard generator={generators.ISSUE} />
-            <EditorCard generator={generators.PULL_REQ} />
+            <GeneratorCard generator={generators.CONVENTION} />
+            <GeneratorCard generator={generators.CONTRIBUTION} />
+            <GeneratorCard generator={generators.ISSUE} />
         </div>
     </article>
 </div>

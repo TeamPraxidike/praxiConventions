@@ -1,6 +1,6 @@
 import {exBranches, exCommits, exIssues, exWorkflows} from "../enums/enums";
 
-export class Payload {
+export class ConventionsPayload {
     commitValue: number;
     branchValue: number;
     issuesValue: number;
@@ -10,7 +10,6 @@ export class Payload {
     includeLinkToCoC: boolean;
     linkToCoC: string;
     includeCredit: boolean;
-    includeCR: boolean;
 
     includeGHProj: boolean;
     includeAssignees: boolean;
@@ -32,7 +31,6 @@ export class Payload {
         this.includeLinkToCoC = false
         this.linkToCoC = "CODE_OF_CONDUCT.md";
         this.includeCredit = false;
-        this.includeCR = true;
 
         // Step 2
         this.includeGHProj = false;
