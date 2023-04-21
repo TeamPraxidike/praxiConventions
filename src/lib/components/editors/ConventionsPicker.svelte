@@ -7,6 +7,7 @@
     import StepperConv from "../reusable/StepperConv.svelte";
     import StepperExample from "../reusable/StepperExample.svelte";
     import StepperBranchTable from "../reusable/StepperBranchTable.svelte";
+    import {exBranches, exCommits, exIssues, exWorkflows} from "../../../typescript/enums/enums";
 
     let innerWidth:number = 0
     let innerHeight:number = 0
@@ -15,31 +16,73 @@
 <!--TODO Check if there is a better way to make the RadioGroups responsive-->
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<div class="w-full bg-surface-800 p-8">
-    <Stepper class="text-sm sm:text-base">
+<div class="w-full w-full bg-surface-800 p-8">
+    <Stepper class="text-sm  w-full sm:text-base">
         <Step>
-            <svelte:fragment slot="header">Commits</svelte:fragment>
-            <span>Choose a naming convention for the commits. Examples will be shown below:</span> <br>
+            <svelte:fragment slot="header">General options</svelte:fragment>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeLinkToCoC} size="sm">Code of Conduct</SlideToggle>
+                <i class="text-surface-300">include a link to your Code of Conduct</i>
+            </div>
+            {#if $payload.includeLinkToCoC}
+                <input type="text" bind:value={$payload.linkToCoC} id="first_name" class="bg-surface-900 border border-surface-700 text-gray-100 text-sm rounded-lg block w-full p-2.5" placeholder="CODE_OF_CONDUCT.md" required>
+            {/if}
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeCredit} size="sm">Credit us</SlideToggle>
+                <i class="text-surface-300">include credits to us on top of the document</i>
+            </div>
+        </Step>
+        <Step>
+            <svelte:fragment slot="header">Development rules</svelte:fragment>
 
+            <span>Choose a code contribution workflow.</span> <br>
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={0}>Conventional Commits</RadioItem>
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={1}>Praxidike Commits</RadioItem>
+                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.CONV_WORKFLOW}>Conventional workflow</RadioItem>
+                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.PRAX_WORKFLOW}>Praxidike Conventions</RadioItem>
                 </RadioGroup>
-                {:else}
+            {:else}
                 <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={0}>Conventional Commits</RadioItem>
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={1}>Praxidike Commits</RadioItem>
+                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.CONV_WORKFLOW}>Conventional workflow</RadioItem>
+                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.PRAX_WORKFLOW}>Praxidike Conventions</RadioItem>
                 </RadioGroup>
             {/if}
 
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeGHProj} size="sm">GitHub Projects</SlideToggle>
+                <i class="text-surface-300">include paragraph that mandates use of GitHub Projects.</i>
+            </div>
+        </Step>
+        <Step>
+            <svelte:fragment slot="header">Issues</svelte:fragment>
+            <span>Choose a structure convention and rules for the issues.</span> <br>
+
+            {#if innerWidth < 640}
+                <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.CONV_STANDARD}>Common Issues Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.PRAX_ISSUES}>Praxidike Conventions</RadioItem>
+                </RadioGroup>
+            {:else}
+                <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.CONV_STANDARD}>Common Issues Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.PRAX_ISSUES}>Praxidike Conventions</RadioItem>
+                </RadioGroup>
+            {/if}
             <div class="py-4 px-2 gap-5 flex flex-col">
-                <StepperConv example={$payload.commitValue} type="commit" />
-                <StepperExample example={$payload.commitValue} type="commit" />
-                <div class="flex gap-3">
-                    <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.strictCommits} size="sm">Strict Commit</SlideToggle>
-                    <i class="text-surface-300">commits must be focused and isolated</i>
-                </div>
+                <StepperConv example={$payload.issuesValue} type="issues" />
+                <StepperExample example={$payload.issuesValue} type="issues" />
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeAssignees} size="sm">Require Assignees</SlideToggle>
+                <i class="text-surface-300">issues must be assigned to members upon creation</i>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeLabels} size="sm">Require Labels</SlideToggle>
+                <i class="text-surface-300">issues must be labeled upon creation</i>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeSpamPrev} size="sm">Spam Prevention</SlideToggle>
+                <i class="text-surface-300">spamming issues will result in a ban or other penalty</i>
             </div>
         </Step>
         <Step>
@@ -49,46 +92,49 @@
 
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={0}>Common Branch Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={1}>GL</RadioItem>
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.CONV_BRANCHES}>Common Branch Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.GL}>GL</RadioItem>
                 </RadioGroup>
                 {:else}
                 <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={0}>Common Branch Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={1}>GL</RadioItem>
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.CONV_BRANCHES}>Common Branch Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.GL}>GL</RadioItem>
                 </RadioGroup>
             {/if}
 
-            <div class="py-4 px-2 gap-5 flex flex-col">
+            <div class="px-0 py-4 sm:px-2 w-full gap-5 flex flex-col">
                 <StepperBranchTable />
                 <StepperConv example={$payload.branchValue} type="branch" />
                 <StepperExample example={$payload.branchValue} type="branch" />
             </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.stableTagged} size="sm">Tagged stable</SlideToggle>
+                <i class="text-surface-300">the stable branch should be tagged</i>
+            </div>
         </Step>
         <Step>
-            <svelte:fragment slot="header">Development rules</svelte:fragment>
-            WIP
-        </Step>
-        <Step>
-            <svelte:fragment slot="header">Issues</svelte:fragment>
-            <span>Choose a structure convention and rules for the issues.</span>
-
+            <svelte:fragment slot="header">Commits</svelte:fragment>
+            <span>Choose a naming convention for the commits. Examples will be shown below:</span> <br>
 
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={0}>Common Issues Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={1}>Praxidike Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.CONV_COMMITS}>Conventional Commits</RadioItem>
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.PRAX_COMMITS}>Praxidike Commits</RadioItem>
                 </RadioGroup>
-                {:else}
+            {:else}
                 <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={0}>Common Issues Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={1}>Praxidike Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.CONV_COMMITS}>Conventional Commits</RadioItem>
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.PRAX_COMMITS}>Praxidike Commits</RadioItem>
                 </RadioGroup>
             {/if}
 
             <div class="py-4 px-2 gap-5 flex flex-col">
-                <StepperConv example={$payload.issuesValue} type="issues" />
-                <StepperExample example={$payload.issuesValue} type="issues" />
+                <StepperConv example={$payload.commitValue} type="commit" />
+                <StepperExample example={$payload.commitValue} type="commit" />
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.strictCommits} size="sm">Strict Commit</SlideToggle>
+                    <i class="text-surface-300">commits must be focused and isolated</i>
+                </div>
             </div>
         </Step>
     </Stepper>

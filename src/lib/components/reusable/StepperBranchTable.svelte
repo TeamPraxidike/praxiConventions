@@ -17,11 +17,43 @@
         // The data visibly shown in your table body UI.
         body: tableMapperValues(sourceData, ['instance', 'branch', 'branches', 'accepts']),
     };
+
+    const sourceDataSmall = [
+        { position: 1, branch: 'stable', branches: '-', accepts: "main $ hotfix"},
+        { position: 2, branch: 'main', branches: '-', accepts: "topic-* & hotfix"},
+        { position: 3, branch: 'topic-*', branches: 'main', accepts: "-"},
+        { position: 4,  branch: 'hotfix-*', branches: 'stable', accepts: "-"},
+    ];
+
+    const tableSimpleSmall: TableSource = {
+        // A list of heading labels.
+        head: ['Branch', 'Branch from', 'Accepts from'],
+        // The data visibly shown in your table body UI.
+        body: tableMapperValues(sourceDataSmall, ['branch', 'branches', 'accepts']),
+    };
+
+    let innerWidth:number = 0
+    let innerHeight:number = 0
 </script>
 
+<svelte:window bind:innerWidth bind:innerHeight />
+{#if innerWidth > 720}
+    <div class="w-full">
+        <Table regionBody="bg-surface-900"
+               regionHeadCell="bg-surface-900"
+               regionFootCell="bg-surface-900"
+               source={tableSimple} />
+    </div>
+{:else}
+    <div class="w-full">
+        <Table regionBody="bg-surface-900"
+               regionHeadCell="bg-surface-900"
+               regionFootCell="bg-surface-900"
+               text="text-xs"
+               source={tableSimpleSmall} />
+    </div>
+{/if}
 
-<Table regionBody="bg-surface-900"
-       regionHeadCell="bg-surface-900"
-       regionFootCell="bg-surface-900"
-       source={tableSimple} />
+<style lang="scss">
 
+</style>

@@ -1,10 +1,23 @@
-import {exBranches, exCommits, exIssues} from "../enums/enums";
+import {exBranches, exCommits, exIssues, exWorkflows} from "../enums/enums";
 
 export class Payload {
     commitValue: number;
     branchValue: number;
     issuesValue: number;
     strictCommits: boolean;
+    workflowsValue: number;
+
+    includeLinkToCoC: boolean;
+    linkToCoC: string;
+    includeCredit: boolean;
+    includeCR: boolean;
+
+    includeGHProj: boolean;
+    includeAssignees: boolean;
+    includeLabels: boolean;
+    includeSpamPrev: boolean;
+
+    stableTagged: boolean;
 
     /**
      * Constructor for Payload class
@@ -14,8 +27,46 @@ export class Payload {
         this.branchValue = 0;
         this.issuesValue = 0;
         this.strictCommits = false;
+
+        // Step 1
+        this.includeLinkToCoC = false
+        this.linkToCoC = "CODE_OF_CONDUCT.md";
+        this.includeCredit = false;
+        this.includeCR = true;
+
+        // Step 2
+        this.includeGHProj = false;
+        this.workflowsValue = 0;
+
+        // Step 3
+        this.includeAssignees = true;
+        this.includeLabels = true;
+        this.includeSpamPrev = false;
+
+        // Step 4
+        this.stableTagged = true;
     }
 
+    genWorkflow():string {
+        switch (this.workflowsValue) {
+            case exWorkflows.CONV_WORKFLOW:
+                return "1. Locate the issue (missing feature, bug, etc.) and open a well-documented issue about it.\n" +
+                    "2. Branch out from the **correct branch** and use the branch naming convention specified below.\n" +
+                    "3. Commit your changes in a controlled and well-manner. Use the convention for naming your commits.\n" +
+                    "4. Open a **Merge Request** and if possible request reviews from other developers."+
+                    "\n"
+            case exWorkflows.PRAX_WORKFLOW:
+                return "1. List out tasks from the backlog as issues.\n" +
+                    "2. Add any newly appeared issues (missing features, bugs, performance related etc.)\n" +
+                    "3. Branch out from the **correct branch** and use the branch naming convention specified below.\n" +
+                    "4. Open a work in progress **Merge Request** and request reviews from other developers.\n" +
+                    "5. Commit your changes in a controlled and well-manner. Use the convention for naming your commits.\n" +
+                    "6. After reviewing the changes, merge your request"+
+                    "\n"
+            default:
+                return "";
+        }
+    }
 
     genIssue():string {
         switch(this.issuesValue) {
@@ -23,14 +74,14 @@ export class Payload {
                 return "\n" +
                     "1. The issues must follow the naming convention `<TYPE>: <Title>`:\n" +
                     "   * The `<Title>` should begin with an uppercase letter and briefly describe the issue\n" +
-                    "2. The body of an issue must follow the provided templates or should adhere to their structure iff there is no template available for this type of issue. ";
+                    "2. The body of an issue must follow the provided templates or should adhere to their structure iff there is no template available for this type of issue. \n \n ";
             case exIssues.PRAX_ISSUES:
                 return "\n" +
                     "1. The issues must follow the naming convention `[<TYPE>] <Title>`:\n" +
                     "   * The `[<TYPE>]` can be one of the following:\n" +
                     "     * **!!!! INCLUDE YOUR TYPES HERE !!!!**\n" +
                     "   * The `<Title>` should begin with an uppercase letter and briefly describe the issue\n" +
-                    "2. The body of an issue must follow the provided templates or should adhere to their structure iff there is no template available for this type of issue. ";
+                    "2. The body of an issue must follow the provided templates or should adhere to their structure iff there is no template available for this type of issue. \n \n  ";
             default:
                 return "";
         }
@@ -57,8 +108,7 @@ export class Payload {
                     "      * a developer branches and merges from `main`\n" +
                     "    * `<issue number>-feature-<name>` - logically isolated changes related to a specific feature or user story\n" +
                     "    * `<issue number>-bugfix-<name>` - changes related to fixing a specific bug\n" +
-                    "    * `<(optional) issue_number>-hotfix-<name>` - changes related to fixing a critical bug in the production environment\n" +
-                    "\n";
+                    "    * `<(optional) issue_number>-hotfix-<name>` - changes related to fixing a critical bug in the production environment";
             case exBranches.GL:
                 return "\n" +
                     "Most of the branch conventions are taken from the [branching standards & conventions gist](https://gist.github.com/digitaljhelms/4287848).\n" +
@@ -78,8 +128,7 @@ export class Payload {
                     "      * a developer branches and merges from `main`\n" +
                     "    * `<issue number>-<name>` - logically isolated changes related to a specific feature or user story\n" +
                     "    * `<issue number>-<name>` - changes related to fixing a specific bug\n" +
-                    "    * `<(optional) issue_number>-<name>` - changes related to fixing a critical bug in the production environment\n" +
-                    "\n";
+                    "    * `<(optional) issue_number>-<name>` - changes related to fixing a critical bug in the production environment";
             default:
                 return "";
         }
@@ -142,36 +191,46 @@ export class Payload {
 
     // TODO MASSIVE RESTRUCTURING AND OPTIMIZATION
     generate():string {
-        return "<!-- TEMPLATE OF A CONVENTIONS.md TO ESTABLISH RULES WITHIN A REPOSITORY -->\n" +
-            "<!-- Written by Zakrok09 with notable contributions noted or linked below -->\n" +
-            "<!-- Free to use. Credits are appriciated :) -->\n" +
+        return "<!-- CONVENTIONS AND RULES WHEN DEVELOPING IN THIS REPOSITORY -->\n" +
+            (this.includeCredit ?
+                "<!-- Template by Zakrok09 (https://github.com/zakrok09) -->\n" +
+                "<!-- member of TeamPraxidike (https://github.com/TeamPraxidike) -->\n" : "") +
             "\n" +
             "# Rules and conventions\n" +
             "\n" +
-            "This document will describe rules that MUST be followed by contributors to this project during development and coding. The document [Code of Conduct](CODE_OF_CONDUCT.md) focuses more on rules regarding the behaviour of Contributors.\n" +
-            "\n" +
+            "This document will describe rules that MUST be followed by contributors to this project during development and coding. " +
+            (this.includeLinkToCoC ? "The document [Code of Conduct](" + (this.linkToCoC === "" ? "CODE_OF_CONDUCT.md" : this.linkToCoC) + ") focuses more on rules regarding the behaviour of Contributors.": "") +
+            "\n \n" +
             "## Code contribution workflow\n" +
             "\n" +
             "Contributions should follow the correct order of steps. This way the project development will remain of consistent structure and workflow.\n" +
             "\n" +
-            "1. Locate the issue (missing feature, bug, etc.) and open a well documented issue about it.\n" +
-            "2. Branch out from the **correct branch** and use the branch naming convention specified below.\n" +
-            "3. Commit your changes in a controlled and well-manner. Use the convention for naming your commits.\n" +
-            "4. Open a **Merge Request** and if possible request reviews from other developers.\n" +
+            this.genWorkflow() +
             "\n" +
-            "**GitHub projects integration (for repo members):** it is of great importance to utilize the GitHub Projects tool when working in this project. Use the provided columns and set deadlines assignees to the cards added in the Project. Cards are added via issues or created manually to encapsulate a specific requirement.\n" +
+            (this.includeGHProj ? "**GitHub projects integration (for repo members):** it is of great importance to utilize the GitHub Projects tool when working in this project. Use the provided columns and set deadlines assignees to the cards added in the Project. Cards are added via issues or created manually to encapsulate a specific requirement.\n" : "") +
             "\n" +
             "### Issues conventions\n" +
             "\n" +
             "Issues are a great way to contribute to the project and to keep track of its future updates.\n" +
 
-            this.genIssue() +
+            this.genIssue()
 
-            "### Branch conventions\n" +
+            + (this.includeAssignees ? "Upon creating an issue, the author must assign it to a repository developer unless the author is an outside contributor. " : "")
+
+            + (this.includeLabels ? "Upon creating an issue, the author must label the issue with the appropriate labels and categorize the issue. " : "")
+
+            + (this.includeSpamPrev ? "Spamming issues or in any other way breaking the Code of Conduct may result in a ban or mute. " : "")
+
+            +
+
+            "\n \n### Branch conventions\n" +
 
             this.genBranch() +
 
-            "### Commit conventions\n" +
+            (this.stableTagged ? "\n\nThe `stable` branch must be tagged and each merge request to it shall result in a new tag. " : "")
+
+            +
+            "\n \n### Commit conventions\n" +
             "\n" +
             "Commits must abide the following set of rules:\n" +
             "\n" +
