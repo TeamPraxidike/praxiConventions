@@ -16,8 +16,8 @@
 <!--TODO Check if there is a better way to make the RadioGroups responsive-->
 <svelte:window bind:innerWidth bind:innerHeight />
 
-<div class="w-full bg-surface-800 p-8">
-    <Stepper class="text-sm sm:text-base">
+<div class="w-full w-full bg-surface-800 p-8">
+    <Stepper class="text-sm  w-full sm:text-base">
         <Step>
             <svelte:fragment slot="header">General options</svelte:fragment>
             <div class="flex flex-col sm:flex-row gap-3">
@@ -90,7 +90,7 @@
                 </RadioGroup>
             {/if}
 
-            <div class="py-4 px-2 gap-5 flex flex-col">
+            <div class="px-0 py-4 sm:px-2 w-full gap-5 flex flex-col">
                 <StepperBranchTable />
                 <StepperConv example={$payload.branchValue} type="branch" />
                 <StepperExample example={$payload.branchValue} type="branch" />
