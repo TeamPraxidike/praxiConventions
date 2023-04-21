@@ -1,12 +1,8 @@
 <script lang="ts">
-    import {RadioGroup, RadioItem, SlideToggle, Step, Stepper} from '@skeletonlabs/skeleton';
+    import {SlideToggle, Step, Stepper} from '@skeletonlabs/skeleton';
 
 
     import {contributionsPayload} from "../../../stores/store";
-    import StepperConv from "../reusable/StepperConv.svelte";
-    import StepperExample from "../reusable/StepperExample.svelte";
-    import StepperBranchTable from "../reusable/StepperBranchTable.svelte";
-    import {exBranches, exCommits, exIssues, exWorkflows} from "../../../typescript/enums/enums";
 
     let innerWidth:number = 0
     let innerHeight:number = 0
@@ -29,6 +25,10 @@
             <div class="flex flex-col sm:flex-row gap-3">
                 <SlideToggle name="slide" active="bg-primary-500" bind:checked={$contributionsPayload.includeCredit} size="sm">Credit us</SlideToggle>
                 <i class="text-surface-300">include credits to us on top of the document</i>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$contributionsPayload.includeNC} size="sm">Guide for newcomers</SlideToggle>
+                <i class="text-surface-300">include guides for newer contributors</i>
             </div>
         </Step>
     </Stepper>
