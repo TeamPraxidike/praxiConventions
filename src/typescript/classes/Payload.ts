@@ -108,8 +108,7 @@ export class Payload {
                     "      * a developer branches and merges from `main`\n" +
                     "    * `<issue number>-feature-<name>` - logically isolated changes related to a specific feature or user story\n" +
                     "    * `<issue number>-bugfix-<name>` - changes related to fixing a specific bug\n" +
-                    "    * `<(optional) issue_number>-hotfix-<name>` - changes related to fixing a critical bug in the production environment\n" +
-                    "\n";
+                    "    * `<(optional) issue_number>-hotfix-<name>` - changes related to fixing a critical bug in the production environment";
             case exBranches.GL:
                 return "\n" +
                     "Most of the branch conventions are taken from the [branching standards & conventions gist](https://gist.github.com/digitaljhelms/4287848).\n" +
@@ -129,8 +128,7 @@ export class Payload {
                     "      * a developer branches and merges from `main`\n" +
                     "    * `<issue number>-<name>` - logically isolated changes related to a specific feature or user story\n" +
                     "    * `<issue number>-<name>` - changes related to fixing a specific bug\n" +
-                    "    * `<(optional) issue_number>-<name>` - changes related to fixing a critical bug in the production environment\n" +
-                    "\n";
+                    "    * `<(optional) issue_number>-<name>` - changes related to fixing a critical bug in the production environment";
             default:
                 return "";
         }
@@ -229,7 +227,10 @@ export class Payload {
 
             this.genBranch() +
 
-            "### Commit conventions\n" +
+            (this.stableTagged ? "\n\nThe `stable` branch must be tagged and each merge request to it shall result in a new tag. " : "")
+
+            +
+            "\n \n### Commit conventions\n" +
             "\n" +
             "Commits must abide the following set of rules:\n" +
             "\n" +

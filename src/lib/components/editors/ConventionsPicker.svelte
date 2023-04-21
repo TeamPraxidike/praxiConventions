@@ -107,6 +107,10 @@
                 <StepperConv example={$payload.branchValue} type="branch" />
                 <StepperExample example={$payload.branchValue} type="branch" />
             </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.stableTagged} size="sm">Tagged stable</SlideToggle>
+                <i class="text-surface-300">the stable branch should be tagged</i>
+            </div>
         </Step>
         <Step>
             <svelte:fragment slot="header">Commits</svelte:fragment>
