@@ -72,6 +72,18 @@
                 <StepperConv example={$payload.issuesValue} type="issues" />
                 <StepperExample example={$payload.issuesValue} type="issues" />
             </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeAssignees} size="sm">Require Assignees</SlideToggle>
+                <i class="text-surface-300">issues must be assigned to members upon creation</i>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeLabels} size="sm">Require Labels</SlideToggle>
+                <i class="text-surface-300">issues must be labeled upon creation</i>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeSpamPrev} size="sm">Spam Prevention</SlideToggle>
+                <i class="text-surface-300">spamming issues will result in a ban or other penalty</i>
+            </div>
         </Step>
         <Step>
             <svelte:fragment slot="header">Branches</svelte:fragment>

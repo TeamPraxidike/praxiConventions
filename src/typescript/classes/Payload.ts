@@ -13,6 +13,11 @@ export class Payload {
     includeCR: boolean;
 
     includeGHProj: boolean;
+    includeAssignees: boolean;
+    includeLabels: boolean;
+    includeSpamPrev: boolean;
+
+    stableTagged: boolean;
 
     /**
      * Constructor for Payload class
@@ -32,6 +37,14 @@ export class Payload {
         // Step 2
         this.includeGHProj = false;
         this.workflowsValue = 0;
+
+        // Step 3
+        this.includeAssignees = true;
+        this.includeLabels = true;
+        this.includeSpamPrev = false;
+
+        // Step 4
+        this.stableTagged = true;
     }
 
     genWorkflow():string {
@@ -61,14 +74,14 @@ export class Payload {
                 return "\n" +
                     "1. The issues must follow the naming convention `<TYPE>: <Title>`:\n" +
                     "   * The `<Title>` should begin with an uppercase letter and briefly describe the issue\n" +
-                    "2. The body of an issue must follow the provided templates or should adhere to their structure iff there is no template available for this type of issue. ";
+                    "2. The body of an issue must follow the provided templates or should adhere to their structure iff there is no template available for this type of issue. \n \n ";
             case exIssues.PRAX_ISSUES:
                 return "\n" +
                     "1. The issues must follow the naming convention `[<TYPE>] <Title>`:\n" +
                     "   * The `[<TYPE>]` can be one of the following:\n" +
                     "     * **!!!! INCLUDE YOUR TYPES HERE !!!!**\n" +
                     "   * The `<Title>` should begin with an uppercase letter and briefly describe the issue\n" +
-                    "2. The body of an issue must follow the provided templates or should adhere to their structure iff there is no template available for this type of issue. ";
+                    "2. The body of an issue must follow the provided templates or should adhere to their structure iff there is no template available for this type of issue. \n \n  ";
             default:
                 return "";
         }
@@ -202,7 +215,15 @@ export class Payload {
             "\n" +
             "Issues are a great way to contribute to the project and to keep track of its future updates.\n" +
 
-            this.genIssue() +
+            this.genIssue()
+
+            + (this.includeAssignees ? "Upon creating an issue, the author must assign it to a repository developer unless the author is an outside contributor. " : "")
+
+            + (this.includeLabels ? "Upon creating an issue, the author must label the issue with the appropriate labels and categorize the issue. " : "")
+
+            + (this.includeSpamPrev ? "Spamming issues or in any other way breaking the Code of Conduct may result in a ban or mute. " : "")
+
+            +
 
             "\n \n### Branch conventions\n" +
 
