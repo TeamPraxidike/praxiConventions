@@ -1,6 +1,8 @@
 import {writable} from "svelte/store";
-import {Payload} from "../typescript/classes/Payload";
+import {ConventionsPayload} from "../typescript/classes/ConventionsPayload";
 import {Convention} from "../typescript/classes/Convention";
+import {ContributionPayload} from "../typescript/classes/ContributionPayload";
 
-export const payload = writable(new Payload());
+export const conventionsPayload = writable(new ConventionsPayload());
+export const contributionsPayload = writable(new ContributionPayload());
 export const convention = writable(new Convention(0,0,0,false));

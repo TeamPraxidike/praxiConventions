@@ -16,17 +16,17 @@
             <img src="/images/generator-1.png" class="w-10/12" alt="">
             <a href="/generator/conventions" class="btn variant-filled-primary text-md">Use Generator</a>
         </div>
-    {:else if generator === generators.ISSUE}
+    {:else if generator === generators.CONTRIBUTION}
         <div class="bg-surface-800 pb-4 rounded-t-2xl">
-            <h3 class="card-header">Issue template generator</h3>
+            <h3 class="card-header">Contributions generator</h3>
         </div>
         <div class="p-8 gap-4 flex flex-col items-center gap-7">
-            <img src="/images/generator-2.png" class="w-10/12" alt="">
+            <img src="/images/generator-1.png" class="w-10/12" alt="">
             <a href="/generator/contributions" class="btn variant-filled-primary text-md">Use Generator</a>
         </div>
-    {:else if generator === generators.PULL_REQ}
+    {:else if generator === generators.ISSUE}
         <div class="bg-surface-800 pb-4 rounded-t-2xl">
-            <h3 class="card-header">Pull Request Template generator</h3>
+            <h3 class="card-header">Issue Template generator</h3>
         </div>
         <div class="p-8 gap-4 flex flex-col items-center gap-7">
             <img src="/images/generator-3.png" class="w-10/12" alt="">

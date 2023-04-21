@@ -1,6 +1,6 @@
 import {exBranches, exCommits, exIssues, exWorkflows} from "../enums/enums";
 
-export class Payload {
+export class ConventionsPayload {
     commitValue: number;
     branchValue: number;
     issuesValue: number;
