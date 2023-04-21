@@ -7,6 +7,7 @@
     import StepperConv from "../reusable/StepperConv.svelte";
     import StepperExample from "../reusable/StepperExample.svelte";
     import StepperBranchTable from "../reusable/StepperBranchTable.svelte";
+    import {exBranches, exCommits, exIssues, exWorkflows} from "../../../typescript/enums/enums";
 
     let innerWidth:number = 0
     let innerHeight:number = 0
@@ -33,22 +34,38 @@
         </Step>
         <Step>
             <svelte:fragment slot="header">Development rules</svelte:fragment>
-            WIP
-        </Step>
-        <Step>
-            <svelte:fragment slot="header">Issues</svelte:fragment>
-            <span>Choose a structure convention and rules for the issues.</span>
 
-
+            <span>Choose a code contribution workflow.</span> <br>
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={0}>Common Issues Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={1}>Praxidike Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.CONV_WORKFLOW}>Conventional workflow</RadioItem>
+                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.PRAX_WORKFLOW}>Praxidike Conventions</RadioItem>
                 </RadioGroup>
             {:else}
                 <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={0}>Common Issues Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={1}>Praxidike Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.CONV_WORKFLOW}>Conventional workflow</RadioItem>
+                    <RadioItem bind:group={$payload.workflowsValue} name="justify" value={exWorkflows.PRAX_WORKFLOW}>Praxidike Conventions</RadioItem>
+                </RadioGroup>
+            {/if}
+
+            <div class="flex gap-3">
+                <SlideToggle name="slide" active="bg-primary-500" bind:checked={$payload.includeGHProj} size="sm">GitHub Projects</SlideToggle>
+                <i class="text-surface-300">include paragraph that mandates use of GitHub Projects.</i>
+            </div>
+        </Step>
+        <Step>
+            <svelte:fragment slot="header">Issues</svelte:fragment>
+            <span>Choose a structure convention and rules for the issues.</span> <br>
+
+            {#if innerWidth < 640}
+                <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.CONV_STANDARD}>Common Issues Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.PRAX_ISSUES}>Praxidike Conventions</RadioItem>
+                </RadioGroup>
+            {:else}
+                <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.CONV_STANDARD}>Common Issues Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.issuesValue} name="justify" value={exIssues.PRAX_ISSUES}>Praxidike Conventions</RadioItem>
                 </RadioGroup>
             {/if}
             <div class="py-4 px-2 gap-5 flex flex-col">
@@ -63,13 +80,13 @@
 
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={0}>Common Branch Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={1}>GL</RadioItem>
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.CONV_BRANCHES}>Common Branch Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.GL}>GL</RadioItem>
                 </RadioGroup>
                 {:else}
                 <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={0}>Common Branch Conventions</RadioItem>
-                    <RadioItem bind:group={$payload.branchValue} name="justify" value={1}>GL</RadioItem>
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.CONV_BRANCHES}>Common Branch Conventions</RadioItem>
+                    <RadioItem bind:group={$payload.branchValue} name="justify" value={exBranches.GL}>GL</RadioItem>
                 </RadioGroup>
             {/if}
 
@@ -85,13 +102,13 @@
 
             {#if innerWidth < 640}
                 <RadioGroup display="flex-col" active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={0}>Conventional Commits</RadioItem>
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={1}>Praxidike Commits</RadioItem>
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.CONV_COMMITS}>Conventional Commits</RadioItem>
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.PRAX_COMMITS}>Praxidike Commits</RadioItem>
                 </RadioGroup>
             {:else}
                 <RadioGroup active="variant-filled-primary" hover="hover:variant-glass-primary" background="bg-surface-700" border="none">
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={0}>Conventional Commits</RadioItem>
-                    <RadioItem bind:group={$payload.commitValue} name="justify" value={1}>Praxidike Commits</RadioItem>
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.CONV_COMMITS}>Conventional Commits</RadioItem>
+                    <RadioItem bind:group={$payload.commitValue} name="justify" value={exCommits.PRAX_COMMITS}>Praxidike Commits</RadioItem>
                 </RadioGroup>
             {/if}
 

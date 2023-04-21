@@ -1,15 +1,18 @@
-import {exBranches, exCommits, exIssues} from "../enums/enums";
+import {exBranches, exCommits, exIssues, exWorkflows} from "../enums/enums";
 
 export class Payload {
     commitValue: number;
     branchValue: number;
     issuesValue: number;
     strictCommits: boolean;
+    workflowsValue: number;
 
     includeLinkToCoC: boolean;
     linkToCoC: string;
     includeCredit: boolean;
     includeCR: boolean;
+
+    includeGHProj: boolean;
 
     /**
      * Constructor for Payload class
@@ -20,12 +23,37 @@ export class Payload {
         this.issuesValue = 0;
         this.strictCommits = false;
 
+        // Step 1
         this.includeLinkToCoC = false
         this.linkToCoC = "CODE_OF_CONDUCT.md";
         this.includeCredit = false;
         this.includeCR = true;
+
+        // Step 2
+        this.includeGHProj = false;
+        this.workflowsValue = 0;
     }
 
+    genWorkflow():string {
+        switch (this.workflowsValue) {
+            case exWorkflows.CONV_WORKFLOW:
+                return "1. Locate the issue (missing feature, bug, etc.) and open a well-documented issue about it.\n" +
+                    "2. Branch out from the **correct branch** and use the branch naming convention specified below.\n" +
+                    "3. Commit your changes in a controlled and well-manner. Use the convention for naming your commits.\n" +
+                    "4. Open a **Merge Request** and if possible request reviews from other developers."+
+                    "\n"
+            case exWorkflows.PRAX_WORKFLOW:
+                return "1. List out tasks from the backlog as issues.\n" +
+                    "2. Add any newly appeared issues (missing features, bugs, performance related etc.)\n" +
+                    "3. Branch out from the **correct branch** and use the branch naming convention specified below.\n" +
+                    "4. Open a work in progress **Merge Request** and request reviews from other developers.\n" +
+                    "5. Commit your changes in a controlled and well-manner. Use the convention for naming your commits.\n" +
+                    "6. After reviewing the changes, merge your request"+
+                    "\n"
+            default:
+                return "";
+        }
+    }
 
     genIssue():string {
         switch(this.issuesValue) {
@@ -159,19 +187,16 @@ export class Payload {
             "\n" +
             "# Rules and conventions\n" +
             "\n" +
-            "This document will describe rules that MUST be followed by contributors to this project during development and coding." +
+            "This document will describe rules that MUST be followed by contributors to this project during development and coding. " +
             (this.includeLinkToCoC ? "The document [Code of Conduct](" + (this.linkToCoC === "" ? "CODE_OF_CONDUCT.md" : this.linkToCoC) + ") focuses more on rules regarding the behaviour of Contributors.": "") +
-            "\n" +
+            "\n \n" +
             "## Code contribution workflow\n" +
             "\n" +
             "Contributions should follow the correct order of steps. This way the project development will remain of consistent structure and workflow.\n" +
             "\n" +
-            "1. Locate the issue (missing feature, bug, etc.) and open a well documented issue about it.\n" +
-            "2. Branch out from the **correct branch** and use the branch naming convention specified below.\n" +
-            "3. Commit your changes in a controlled and well-manner. Use the convention for naming your commits.\n" +
-            "4. Open a **Merge Request** and if possible request reviews from other developers.\n" +
+            this.genWorkflow() +
             "\n" +
-            "**GitHub projects integration (for repo members):** it is of great importance to utilize the GitHub Projects tool when working in this project. Use the provided columns and set deadlines assignees to the cards added in the Project. Cards are added via issues or created manually to encapsulate a specific requirement.\n" +
+            (this.includeGHProj ? "**GitHub projects integration (for repo members):** it is of great importance to utilize the GitHub Projects tool when working in this project. Use the provided columns and set deadlines assignees to the cards added in the Project. Cards are added via issues or created manually to encapsulate a specific requirement.\n" : "") +
             "\n" +
             "### Issues conventions\n" +
             "\n" +
