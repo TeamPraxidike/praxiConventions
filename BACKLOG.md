@@ -12,9 +12,9 @@ This section contains the user stories. The order is not representative of their
 
 **Acceptance criteria:**
 
-- [ ] Users can create and extensively edit convention files to include specific and descriptive rules
+- [x] Users can create and extensively edit convention files to include specific and descriptive rules
 
-- [ ] Users can copy their resulting conventions file
+- [x] Users can copy their resulting conventions file
 
 
 ### Create Pull Request templates
