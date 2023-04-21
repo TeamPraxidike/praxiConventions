@@ -10,7 +10,6 @@ export class ConventionsPayload {
     includeLinkToCoC: boolean;
     linkToCoC: string;
     includeCredit: boolean;
-    includeCR: boolean;
 
     includeGHProj: boolean;
     includeAssignees: boolean;
@@ -32,7 +31,6 @@ export class ConventionsPayload {
         this.includeLinkToCoC = false
         this.linkToCoC = "CODE_OF_CONDUCT.md";
         this.includeCredit = false;
-        this.includeCR = true;
 
         // Step 2
         this.includeGHProj = false;

@@ -3,6 +3,7 @@
     import ConventionsPicker from "$lib/components/editors/ConventionsPicker.svelte";
 
     import {generators} from "../../../typescript/enums/enums";
+    import ContributionsPicker from "../../../lib/components/editors/ContributionsPicker.svelte";
 </script>
 
 <h1 class="text-center pt-16 pb-5">CONTRIBUTING.md Generator</h1>
@@ -15,7 +16,7 @@
     <div class="right w-full xl:w-6/12 flex flex-col items-center">
         <h3 class="mb-4">Create your CONTRIBUTING.md</h3>
         <div class="w-full flex justify-center lg:px-10">
-            <ConventionsPicker/>
+            <ContributionsPicker />
         </div>
     </div>
 </div>
