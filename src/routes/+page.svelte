@@ -11,7 +11,7 @@
     let card2:CardClass = new CardClass("Why use?", "Standardizing issues, commits, branches, rules, and workflows through conventions can significantly enhance repositories by making work more efficient and enjoyable.")
     let card3:CardClass = new CardClass("How to", "You can use the available editors to edit and create describing files for workflow, rules and conventions in repositories.")
 
-    let meta = new MetaSnippet("", "Welcome to praxiConventions! Generate GitHub community health files with ease using the generators presented here", "website");
+    let meta = new MetaSnippet("Home", "Welcome to praxiConventions! Generate GitHub community health files with ease using the generators presented here", "website");
 </script>
 
 <MetaHead meta={meta} />
