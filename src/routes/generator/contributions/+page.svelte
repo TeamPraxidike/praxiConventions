@@ -1,10 +1,15 @@
 <script lang="ts">
     import ResultPanel from "$lib/components/reusable/ResultPanel.svelte";
-    import ConventionsPicker from "$lib/components/editors/ConventionsPicker.svelte";
 
     import {generators} from "../../../typescript/enums/enums";
     import ContributionsPicker from "../../../lib/components/editors/ContributionsPicker.svelte";
+    import {MetaSnippet} from "../../../typescript/classes/MetaSnippet";
+    import MetaHead from "../../../lib/components/MetaHead.svelte";
+
+    let meta = new MetaSnippet("Contribution Generator", "Generate descriptive CONTRIBUTION.md with ease, using the generator tool.", "webapp");
 </script>
+
+<MetaHead meta={meta} />
 
 <h1 class="text-center pt-16 pb-5">CONTRIBUTING.md Generator</h1>
 <p class="text-center"> Developed by <a class="unstyled text-primary-400 underline" href="https://github.com/Zakrok09">ecstasy</a> - member of <a class="unstyled text-primary-400 underline" href="https://github.com/TeamPraxidike">Praxidike</a></p>
