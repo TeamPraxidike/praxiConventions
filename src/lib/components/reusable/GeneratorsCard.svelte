@@ -13,7 +13,7 @@
             <h3 class="card-header">Conventions generator</h3>
         </div>
         <div class="p-8 gap-4 flex flex-col items-center gap-7">
-            <img src="/images/generator-1.png" class="w-10/12" alt="">
+            <img src="/images/generator-1.png" class="w-10/12" alt="Image depicting how a conventions generator looks">
             <a href="/generator/conventions" class="btn variant-filled-primary text-md">Use Generator</a>
         </div>
     {:else if generator === generators.CONTRIBUTION}
@@ -21,7 +21,7 @@
             <h3 class="card-header">Contributions generator</h3>
         </div>
         <div class="p-8 gap-4 flex flex-col items-center gap-7">
-            <img src="/images/generator-1.png" class="w-10/12" alt="">
+            <img src="/images/generator-1.png" class="w-10/12" alt="Image depicting how a contributions generator looks">
             <a href="/generator/contributions" class="btn variant-filled-primary text-md">Use Generator</a>
         </div>
     {:else if generator === generators.ISSUE}
@@ -29,7 +29,7 @@
             <h3 class="card-header">Issue Template generator</h3>
         </div>
         <div class="p-8 gap-4 flex flex-col items-center gap-7">
-            <img src="/images/generator-3.png" class="w-10/12" alt="">
+            <img src="/images/generator-3.png" class="w-10/12" alt="Image depicting how a pull-requests-template generator looks">
             <a href="/generator/pull-requests" class="btn variant-filled-primary text-md">Use Generator</a>
         </div>
     {/if}
