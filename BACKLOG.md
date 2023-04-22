@@ -60,4 +60,4 @@ This section contains the user stories. The order is not representative of their
 
 **Acceptance criteria:**
 
-- [ ] Users can use the Web App to easily create rules and instructions for contributions
+- [x] Users can use the Web App to easily create rules and instructions for contributions
