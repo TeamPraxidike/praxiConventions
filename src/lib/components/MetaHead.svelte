@@ -1,16 +1,18 @@
 
 <script lang="ts">
-    export let metaDescription:string;
-    export let title:string;
-    export let type:string;
+    import {MetaSnippet} from "../../typescript/classes/MetaSnippet";
+    export let meta:MetaSnippet = new MetaSnippet("praxiConventions", "Generate community health files with ease", "website");
+
+    let title = meta.title === "" ? "praxiConventions" : meta.title + " | praxiConventions";
 </script>
 
 <svelte:head>
     <!--  Newer  -->
-    <title>{title + " | praxiConventions"}</title>
+    <title>{title}</title>
+    <meta name="description" content={ meta.metaDescription }>
 
     <!--  Open graph  -->
-    <meta property="og:description"         content={metaDescription} >
-    <meta property="og:title"               content={title + " | praxiConventions"} />
-    <meta property="og:type"                content={type} />
+    <meta property="og:description"         content={ meta.metaDescription } >
+    <meta property="og:title"               content={ meta.title + " | praxiConventions"} />
+    <meta property="og:type"                content={ meta.type } />
 </svelte:head>
