@@ -4,12 +4,17 @@
     import {generators} from "../typescript/enums/enums";
     import IconifyIcon from '@iconify/svelte';
     import GeneratorCard from "$lib/components/reusable/GeneratorsCard.svelte";
+    import MetaHead from "$lib/components/MetaHead.svelte";
+    import {MetaSnippet} from "../typescript/classes/MetaSnippet";
 
     let card1:CardClass = new CardClass("Inspiration", "The inspiration behind this project stems from observing the absence of established rules and conventions in repositories managed by newer developers.")
     let card2:CardClass = new CardClass("Why use?", "Standardizing issues, commits, branches, rules, and workflows through conventions can significantly enhance repositories by making work more efficient and enjoyable.")
     let card3:CardClass = new CardClass("How to", "You can use the available editors to edit and create describing files for workflow, rules and conventions in repositories.")
 
+    let meta = new MetaSnippet("", "Welcome to praxiConventions! Generate GitHub community health files with ease using the generators presented here", "website");
 </script>
+
+<MetaHead meta={meta} />
 
 <div>
     <div class="mb-10 xl:mb-16">
