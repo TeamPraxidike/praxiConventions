@@ -35,10 +35,11 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <!--  Favicons  -->
-    <link rel="icon" href="favicons/favicon-16.png" sizes="16x16" type="image/png">
-    <link rel="icon" href="favicons/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="favicons/favicon-128.png" sizes="128x128" type="image/png">
+    <link rel="icon" href="favicons/favicon-64.png" sizes="64x64" type="image/png">
     <link rel="icon" href="favicons/favicon-48.png" sizes="48x48" type="image/png">
-    <link rel="icon" href="favicons/favicon-62.png" sizes="62x62" type="image/png">
+    <link rel="icon" href="favicons/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="favicons/favicon-16.png" sizes="16x16" type="image/png">
 </svelte:head>
 
 <Header />
