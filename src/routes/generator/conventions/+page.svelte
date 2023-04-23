@@ -1,9 +1,11 @@
 <script lang="ts">
-    import ResultPanel from "$lib/components/reusable/ResultPanel.svelte";
-    import ConventionsPicker from "$lib/components/editors/ConventionsPicker.svelte";
+    import {ResultPanel} from "$lib/components/reusable";
+    import {ConventionsPicker} from "$lib/components/editors";
+    import MetaHead from "$lib/components/MetaHead.svelte";
+
+
     import {generators} from "../../../typescript/enums/enums";
     import {MetaSnippet} from "../../../typescript/classes/MetaSnippet";
-    import MetaHead from "../../../lib/components/MetaHead.svelte";
 
     let meta = new MetaSnippet("Conventions Generator", "Generate descriptive CONVENTIONS.md with ease, using the generator tool.", "webapp");
 </script>

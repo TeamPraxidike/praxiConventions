@@ -4,13 +4,13 @@
     import '../app.css';
 
 
+    import {Header, Footer} from "$lib/components/page";
+
     import hljs from 'highlight.js';
     import 'highlight.js/styles/github-dark.css';
     import { storeHighlightJs } from '@skeletonlabs/skeleton';
-    storeHighlightJs.set(hljs);
 
-    import Header from "$lib/components/page/Header.svelte";
-    import Footer from "$lib/components/page/Footer.svelte";
+    storeHighlightJs.set(hljs);
 </script>
 
 <svelte:head>

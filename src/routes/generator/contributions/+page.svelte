@@ -1,10 +1,10 @@
 <script lang="ts">
-    import ResultPanel from "$lib/components/reusable/ResultPanel.svelte";
+    import {ResultPanel} from "$lib/components/reusable";
+    import {ContributionsPicker} from "$lib/components/editors";
+    import MetaHead from "$lib/components/MetaHead.svelte";
 
     import {generators} from "../../../typescript/enums/enums";
-    import ContributionsPicker from "../../../lib/components/editors/ContributionsPicker.svelte";
     import {MetaSnippet} from "../../../typescript/classes/MetaSnippet";
-    import MetaHead from "../../../lib/components/MetaHead.svelte";
 
     let meta = new MetaSnippet("Contribution Generator", "Generate descriptive CONTRIBUTION.md with ease, using the generator tool.", "webapp");
 </script>

@@ -1,5 +1,4 @@
 <script>
-
     import MetaHead from "$lib/components/MetaHead.svelte";
     import {MetaSnippet} from "../../../typescript/classes/MetaSnippet";
 
