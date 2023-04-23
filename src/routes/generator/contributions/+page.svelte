@@ -6,7 +6,7 @@
     import {generators} from "$lib/typescript/enums/enums";
     import {MetaSnippet} from "$lib/typescript/classes/MetaSnippet";
 
-    let meta = new MetaSnippet("Contribution Generator", "Generate descriptive CONTRIBUTION.md with ease, using the generator tool.", "webapp");
+    let meta = new MetaSnippet("Contributions Generator", "Generate descriptive CONTRIBUTION.md with ease, using the generator tool.", "webapp");
 </script>
 
 <MetaHead meta={meta} />

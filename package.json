@@ -34,7 +34,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@axe-core/playwright": "^4.6.1",
 		"highlight.js": "^11.7.0",
+		"playwright": "^1.32.3",
 		"sass": "^1.62.0"
 	}
 }
