@@ -1,7 +1,15 @@
-import { describe, it, expect } from 'vitest';
+import { afterEach, describe, expect, it} from "vitest";
+import {cleanup, render, screen} from '@testing-library/svelte';
+import {Card} from "$lib/components/reusable";
+import {CardClass} from "$lib/typescript/classes/CardClass";
 
-describe('sum test', () => {
-    it('adds 1 + 2 to equal 3', () => {
-        expect(1 + 2).toBe(3);
-    });
+describe('Test Card.svelte', async () => {
+    afterEach(() => cleanup());
+
+    it('Test', async () => {
+        // Add options to components
+        render(Card, {card: new CardClass("Inspiration","Inspiration desc")});
+        expect(screen.getByText('Inspiration')).toBeInTheDocument();
+        expect(screen.getByText('Inspiration desc')).toBeInTheDocument();
+    })
 });
