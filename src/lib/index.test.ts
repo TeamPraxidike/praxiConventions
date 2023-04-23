@@ -13,7 +13,3 @@ describe('Test Card.svelte', async () => {
         expect(screen.getByText('Inspiration desc')).toBeInTheDocument();
     })
 });
-
-describe('Test Conventions editor', async () => {
-
-})
