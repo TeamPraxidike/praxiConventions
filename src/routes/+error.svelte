@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores';
-    import {MetaSnippet} from "../typescript/classes/MetaSnippet";
+    import {MetaSnippet} from "$lib/typescript/classes/MetaSnippet";
     import MetaHead from "$lib/components/MetaHead.svelte";
 
 
@@ -11,7 +11,7 @@
 
 <div class="w-full h-screen flex flex-col justify-center items-center">
     <h1><span class="text-primary-400">{$page.status}</span>: {$page.error.message}</h1>
-    <p>Something totalle went wrong.</p>
+    <p>Something totally went wrong.</p>
 </div>
 
 <style lang="scss">

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {conventionsPayload, contributionsPayload} from "../../../stores/store";
+    import {conventionsPayload, contributionsPayload} from "$lib/stores/store";
     import { CodeBlock } from "@skeletonlabs/skeleton";
-    import {generators} from "../../../typescript/enums/enums";
+    import {generators} from "$lib/typescript/enums/enums";
 
     export let generator:generators = 0;
 </script>

@@ -2,11 +2,11 @@
     import {RadioGroup, RadioItem, SlideToggle, Step, Stepper} from '@skeletonlabs/skeleton';
 
 
-    import {conventionsPayload} from "../../../stores/store";
+    import {conventionsPayload} from "$lib/stores/store";
     import StepperConv from "../reusable/StepperConv.svelte";
     import StepperExample from "../reusable/StepperExample.svelte";
     import StepperBranchTable from "../reusable/StepperBranchTable.svelte";
-    import {exBranches, exCommits, exIssues, exWorkflows} from "../../../typescript/enums/enums";
+    import {exBranches, exCommits, exIssues, exWorkflows} from "$lib/typescript/enums/enums";
 
     let innerWidth:number = 0
     let innerHeight:number = 0

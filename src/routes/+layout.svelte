@@ -4,13 +4,13 @@
     import '../app.css';
 
 
+    import {Header, Footer} from "$lib/components/page";
+
     import hljs from 'highlight.js';
     import 'highlight.js/styles/github-dark.css';
     import { storeHighlightJs } from '@skeletonlabs/skeleton';
-    storeHighlightJs.set(hljs);
 
-    import Header from "$lib/components/page/Header.svelte";
-    import Footer from "$lib/components/page/Footer.svelte";
+    storeHighlightJs.set(hljs);
 </script>
 
 <svelte:head>
@@ -23,13 +23,13 @@
     <meta name="theme-color" content="#D1063C">
 
     <!--  Open Graph  -->
-    <meta property="og:url"                 content="https://conventions.praxidike.org/" />
-    <meta property="og:site_name"           content="praxiConventions" />
+    <meta property="og:url"                 content="https://conventions.praxidike.org/">
+    <meta property="og:site_name"           content="praxiConventions">
     <meta property="og:image"               content="https://conventions.praxidike.org/ogmeta.png">
     <meta property="og:image:alt"           content="Open Graph meta image of praxiConventions">
     <meta property="og:image:width"         content="1200">
     <meta property="og:image:height"        content="630">
-    <meta property="og:locale"              content="en_US" />
+    <meta property="og:locale"              content="en_US">
 
     <!--  Twitter  -->
     <meta name="twitter:card" content="summary_large_image">
