@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {generators} from "../../../typescript/enums/enums";
+    import {generators} from "$lib/typescript/enums/enums";
 
     export let generator:generators;
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {exCommits, exBranches, exIssues} from "../../../typescript/enums/enums";
+    import {exCommits, exBranches, exIssues} from "$lib/typescript/enums/enums";
 
     export let type:string;
     export let example = 0;

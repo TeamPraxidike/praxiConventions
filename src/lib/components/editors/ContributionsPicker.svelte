@@ -1,8 +1,8 @@
 <script lang="ts">
     import {SlideToggle, Step, Stepper} from '@skeletonlabs/skeleton';
 
-    import {contributionsPayload} from "../../../stores/store";
-    import {conWorkflows} from "../../../typescript/enums/enums";
+    import {contributionsPayload} from "../../stores/store";
+    import {conWorkflows} from "../../typescript/enums/enums";
     import {RadioGroup, RadioItem} from "@skeletonlabs/skeleton";
 
     let innerWidth:number = 0

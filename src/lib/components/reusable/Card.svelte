@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {CardClass} from "../../../typescript/classes/CardClass";
+    import {CardClass} from "$lib/typescript/classes/CardClass";
 
     export let card:CardClass = new CardClass("Title", "Desc");
 </script>

@@ -3,8 +3,8 @@
     import {ContributionsPicker} from "$lib/components/editors";
     import MetaHead from "$lib/components/MetaHead.svelte";
 
-    import {generators} from "../../../typescript/enums/enums";
-    import {MetaSnippet} from "../../../typescript/classes/MetaSnippet";
+    import {generators} from "$lib/typescript/enums/enums";
+    import {MetaSnippet} from "$lib/typescript/classes/MetaSnippet";
 
     let meta = new MetaSnippet("Contribution Generator", "Generate descriptive CONTRIBUTION.md with ease, using the generator tool.", "webapp");
 </script>

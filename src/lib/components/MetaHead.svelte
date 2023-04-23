@@ -1,6 +1,6 @@
 
 <script lang="ts">
-    import {MetaSnippet} from "../../typescript/classes/MetaSnippet";
+    import {MetaSnippet} from "$lib/typescript/classes/MetaSnippet";
     export let meta:MetaSnippet = new MetaSnippet("praxiConventions", "Generate community health files with ease", "website");
 </script>
 

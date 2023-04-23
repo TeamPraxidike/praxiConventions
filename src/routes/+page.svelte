@@ -2,9 +2,9 @@
     import {Card, GeneratorsCard} from "../lib/components/reusable";
     import MetaHead from "$lib/components/MetaHead.svelte";
 
-    import { CardClass } from "../typescript/classes/CardClass"
-    import {generators} from "../typescript/enums/enums";
-    import {MetaSnippet} from "../typescript/classes/MetaSnippet";
+    import { CardClass } from "../lib/typescript/classes/CardClass"
+    import {generators} from "../lib/typescript/enums/enums";
+    import {MetaSnippet} from "../lib/typescript/classes/MetaSnippet";
 
     import IconifyIcon from '@iconify/svelte';
 
