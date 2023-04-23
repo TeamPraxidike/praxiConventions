@@ -4,7 +4,7 @@ import IconifyIcon from "@iconify/svelte";
 </script>
 
 <footer class="flex flex-col justify-center items-center p-12 text-surface-100 gap-6">
-    <div class="flex flex-row gap-6">
+    <div class="flex flex-row gap-6 flex-wrap">
         <p>Written in: </p>
         <div class="flex gap-4">
             <IconifyIcon style="font-size: 2em" icon="logos:svelte-icon" />
