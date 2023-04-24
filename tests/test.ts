@@ -1,6 +1,14 @@
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+test.describe('website', () => {
+    test('should be browsable', async ({ page }) => {
+        // Got to the generator
+        await page.goto('http://localhost:5173/');
+        await page.getByRole('link', { name: 'Use Generator' }).first().click();
+    });
+})
+
 test.describe('homepage', () => {
     test('should not have any automatically detectable accessibility issues', async ({ page }) => {
         await page.goto('/');

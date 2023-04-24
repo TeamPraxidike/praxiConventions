@@ -1,8 +1,10 @@
 import { afterEach, describe, expect, it} from "vitest";
-import {cleanup, getByRole, render, screen} from '@testing-library/svelte';
+import {cleanup, getByRole, getByText, render, screen} from '@testing-library/svelte';
 import {Card} from "$lib/components/reusable";
 import {CardClass} from "$lib/typescript/classes/CardClass";
 import {Footer, Header} from "./components/page";
+import {ConventionsPicker} from "./components/editors";
+import {ResultPanel} from "./components/reusable";
 
 describe('Test Card.svelte', async () => {
     afterEach(() => cleanup());
@@ -14,6 +16,19 @@ describe('Test Card.svelte', async () => {
         expect(screen.getByText('Inspiration desc')).toBeInTheDocument();
     });
 });
+
+describe('Conventions picker', async () => {
+    afterEach(() => cleanup());
+
+    it('renders the CoC switch', async () => {
+        // Add options to components
+        render(ConventionsPicker);
+        const {container} = render(ResultPanel);
+
+        const cocButton = screen.getByRole('checkbox', { name: /Code of Conduct/i });
+        expect(cocButton).toBeInTheDocument();
+    })
+})
 
 describe('Header component', async () => {
     afterEach(()=> cleanup());
