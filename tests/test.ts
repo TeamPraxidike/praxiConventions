@@ -4,7 +4,7 @@ import AxeBuilder from '@axe-core/playwright';
 test.describe('website', () => {
     test('should be browsable', async ({ page }) => {
         // Got to the generator
-        await page.goto('http://localhost:5173/');
+        await page.goto('/');
         await page.getByRole('link', { name: 'Use Generator' }).first().click();
     });
 })
