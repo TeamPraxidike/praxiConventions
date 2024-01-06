@@ -31,3 +31,7 @@ You can contribute in one of the following ways:
 1. Open issues to present possible templates or send links to them
   
 2. Forking it and merging it according to the standards.
+
+## Website
+
+WIP
